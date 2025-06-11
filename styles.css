@@ -1,0 +1,932 @@
+/* Modern Base Styles */
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: linear-gradient(135deg, #1a1a1a, #333);
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+header h1 {
+  margin: 5px 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Team Logo Section */
+.vn-teamOverviewWrap {
+  width: 100%;
+  background-color: #fff;
+  padding: 15px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.vn-teamNav {
+  width: 100%;
+}
+
+.teams-logo-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ap-logoteam-wrp {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ap-logoteam-wrp img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: all 0.2s ease;
+}
+
+.ap-logoteam-wrp:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.ap-logoteam-wrp.selected {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
+}
+
+/* Right tick styling */
+.right-tick {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #4CAF50;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.ap-logoteam-wrp.selected .right-tick {
+  opacity: 1;
+}
+
+/* Team Name Section */
+#team-name {
+  text-align: center;
+  padding: 15px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+#team-name h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+#main-container {
+  display: flex;
+  gap: 15px;
+  margin: 15px;
+  flex: 1;
+  position: relative;
+  height: calc(100vh - 120px);
+}
+
+/* Resizer styles */
+#resizer {
+  width: 6px;
+  background: linear-gradient(90deg, #e0e0e0, #f0f0f0);
+  cursor: col-resize;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  transition: background 0.2s ease;
+  border-radius: 3px;
+}
+
+#resizer::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 50px;
+  width: 2px;
+  background-color: #999;
+  border-radius: 1px;
+}
+
+#resizer:hover {
+  background: linear-gradient(90deg, #d0d0d0, #e0e0e0);
+}
+
+#squad-view, #playing-team {
+  flex: 1;
+  min-width: 360px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#squad {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+  height: calc(100vh - 150px); /* Adjust this value based on your header heights */
+  padding-right: 10px;
+}
+
+/* Grid containers with fixed size */
+.players-container, #positions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+/* Player card with fixed dimensions */
+.player-card {
+  position: relative;
+  background-color: #ffffff;
+  width: 160px;
+  height: 180px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 2px solid var(--team-primary);
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+  user-select: none;
+  background: linear-gradient(to bottom, var(--team-secondary)05, var(--team-primary)05);
+}
+
+/* Image container with fixed dimensions */
+.player-img {
+  width: 160px;
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+  background-color: #f5f5f5;
+  flex-shrink: 0;
+}
+
+.player-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.player-info {
+  padding: 4px 8px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 4px;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.player-name h2 {
+  font-size: 13px;
+  margin: 0;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.player-role {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Position indicator */
+.position-indicator, .squad-position-indicator {
+  background-color: var(--team-primary);
+  color: var(--team-secondary);
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 0;
+  position: static;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+/* Special styling for Impact Sub */
+.position[data-position="12"] .position-indicator {
+  background-color: #ff9800;
+}
+
+.squad-position-indicator {
+  background-color: var(--team-secondary);
+}
+
+/* Role and status icons */
+.role-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  z-index: 10;
+}
+
+.status-icon {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  z-index: 10;
+}
+
+.foreign-icon {
+  top: 8px;
+  left: 8px;
+}
+
+.captain-icon {
+  top: 8px;
+  left: 35px;
+}
+
+/* Remove button */
+.remove-player {
+  position: absolute;
+  top: 35px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: rgba(255, 59, 48, 0.9);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.remove-player:hover {
+  background-color: #ff3b30;
+  transform: scale(1.1);
+}
+
+/* Position box with fixed dimensions */
+.position {
+  position: relative;
+  width: 160px;
+  height: 180px;
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  background-color: white;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.position.occupied {
+  border: none;
+  padding: 0;
+}
+
+/* Hover effects */
+.player-card:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Add styling for section headers */
+#squad-view h3, #playing-team h3 {
+  margin: 0 0 10px 0;
+  padding: 5px;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.player-card img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.player-card h2,
+.player-card span {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Add smooth transitions */
+.player-card, .position {
+  transition: all 0.2s ease;
+}
+
+/* Scrollbar styling */
+#squad::-webkit-scrollbar,
+#positions::-webkit-scrollbar {
+  width: 8px;
+}
+
+#squad::-webkit-scrollbar-track,
+#positions::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#squad::-webkit-scrollbar-thumb,
+#positions::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+#squad::-webkit-scrollbar-thumb:hover,
+#positions::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Remove these as they're no longer needed */
+#make-team-btn,
+#make-team-section,
+#make-team-section.visible,
+.hidden {
+  display: none;
+}
+
+.squad-section {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.section-header {
+    background: linear-gradient(135deg, var(--team-primary) 0%, var(--team-secondary) 100%);
+    color: white;
+    padding: 10px;
+    margin: 0;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Update player-name to accommodate the icon */
+.player-name {
+    position: relative;
+    padding: 0 5px;
+}
+
+/* Add a foreign player counter style */
+#foreign-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #333;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 100;
+}
+
+/* Popup Message Styling */
+#popup-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(255, 235, 235, 0.98);
+    border-left: 4px solid #ff3b30;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 59, 48, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+    transform: translateX(120%);
+    transition: transform 0.3s ease-in-out;
+}
+
+#popup-message.popup-show {
+    transform: translateX(0);
+}
+
+.popup-hidden {
+    transform: translateX(120%);
+}
+
+.popup-text {
+    color: #cc2f2f;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.popup-close {
+    background: none;
+    border: none;
+    color: #cc2f2f;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.popup-close:hover {
+    background-color: rgba(204, 47, 47, 0.1);
+    transform: scale(1.1);
+}
+
+/* Add this to prevent transitions during resize */
+body.resizing .player-card,
+body.resizing .position,
+body.resizing #squad-view,
+body.resizing #playing-team {
+    transition: none !important;
+}
+
+/* Update the JavaScript resize function minimum widths */
+
+/* Add/update these styles */
+.player-card {
+    cursor: grab;
+    user-select: none;
+}
+
+.player-card.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+.position.dragover {
+    border-color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.position {
+    position: relative;
+    width: 160px;
+    height: 180px;
+    border: 2px dashed #ddd;
+    border-radius: 12px;
+    background-color: white;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.position.occupied {
+    border: none;
+    padding: 0;
+}
+
+.position-label {
+    color: #666;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+/* Add these styles for the foreign player counter */
+.foreign-counter {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text */
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+}
+
+.foreign-counter img {
+    width: 16px;
+    height: 16px;
+}
+
+.foreign-counter span {
+    color: #000000; /* Black text */
+}
+
+/* Update the limit reached style */
+.foreign-counter.limit-reached span {
+    color: #ff3b30; /* Keep the red warning color */
+}
+
+/* Add styles for the clear button */
+.clear-lineup-btn {
+    margin-top: auto; /* Push button to bottom */
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    background-color: #ff3b30;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(255, 59, 48, 0.2);
+}
+
+.clear-lineup-btn:hover {
+    background-color: #ff453a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3);
+}
+
+.clear-lineup-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(255, 59, 48, 0.2);
+}
+
+.clear-lineup-btn i {
+    font-size: 16px;
+}
+
+/* Add styles for the button container and buttons */
+.lineup-buttons {
+    margin-top: auto;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    padding: 0 15px;
+}
+
+.lineup-btn {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    opacity: 0.6;
+    pointer-events: none;
+    color: #ffffff; /* Ensure text is white for all buttons */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Optional: add subtle text shadow for better readability */
+}
+
+.lineup-btn.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lineup-btn:hover {
+    transform: translateY(-1px);
+}
+
+.lineup-btn:active {
+    transform: translateY(0);
+}
+
+/* Clear button specific styles */
+.clear-btn {
+    background-color: #ff3b30;
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 59, 48, 0.2);
+}
+
+.clear-btn:hover {
+    background-color: #ff453a;
+    box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3);
+}
+
+/* Preview button specific styles */
+.preview-btn {
+    background-color: var(--team-primary);
+    color: #ffffff; /* Ensure text is white */
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2);
+}
+
+.preview-btn:hover {
+    background-color: var(--team-secondary);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+}
+
+/* Download button specific styles */
+.download-btn {
+    background-color: #34c759;
+    color: white;
+    box-shadow: 0 2px 8px rgba(52, 199, 89, 0.2);
+}
+
+.download-btn:hover {
+    background-color: #32d058;
+    box-shadow: 0 4px 12px rgba(52, 199, 89, 0.3);
+}
+
+/* Preview modal styles */
+.preview-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    padding: 40px 20px;
+    position: relative;
+    overflow-y: auto;
+}
+
+/* Update modal header styles */
+.modal-content h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: var(--team-primary);
+}
+
+/* Update close button styles */
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+/* Update preview players grid */
+.preview-players {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+/* Add animation for modal opening */
+.preview-modal.active {
+    display: flex;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Add styles for preview cards */
+.preview-modal .player-card {
+    width: 200px;
+    height: 220px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preview-modal .player-card .remove-player {
+    display: none; /* Hide remove button in preview */
+}
+
+.preview-modal .player-card .player-name h2 {
+    font-size: 14px; /* Smaller font size for player names */
+    margin: 4px 0;
+    color: #333;
+}
+
+.preview-modal .player-card .player-role {
+    font-size: 12px; /* Smaller font size for role */
+    color: #666;
+    display: block; /* Ensure role is visible */
+    margin-top: 2px;
+}
+
+.preview-modal .player-card .position-indicator {
+    font-size: 12px;
+    padding: 2px 6px;
+    margin-bottom: 4px;
+}
+
+/* Ensure player info is properly spaced */
+.preview-modal .player-info {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Update preview card image styles */
+.preview-modal .player-card .player-img {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.preview-modal .player-card .player-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Change from cover to contain */
+    object-position: center; /* Center the image */
+    padding: 5px; /* Add slight padding */
+}
+
+:root {
+    --team-primary: #FECB00;    /* Default CSK yellow */
+    --team-secondary: #1C1C72;  /* Default CSK blue */
+    --team-accent: #FFFFFF;     /* Default white */
+}
+
+#team-name h2 {
+    color: var(--team-primary);
+    text-shadow: 1px 1px 2px var(--team-secondary)40;
+}
+
+.subsection-header {
+    font-size: 1.1em;
+    color: #333;
+    margin: 15px 0 10px 10px;
+    padding: 8px 15px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 4px;
+}
+
+.squad-subsection {
+    margin-bottom: 20px;
+}
+
+.squad-subsection:last-child {
+    margin-bottom: 0;
+}
+
+.main-squad-header {
+    margin-bottom: 20px !important;
+    font-size: 1.4em !important;
+    padding: 12px 15px !important;
+}
+
+.player-type-counter {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    margin: 15px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+
+.counter-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.counter-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.counter-value {
+    background: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    min-width: 24px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Add these styles for the initial state */
+.main-squad-header {
+    text-align: center;
+    color: #666;
+    font-size: 1.2em;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    margin: 20px;
+}
+
+#team-name h2 {
+    color: #666; /* Default color before team selection */
+}
+
+/* Update this style to handle initial state */
+.section-header {
+    background: linear-gradient(135deg, #666 0%, #333 100%); /* Default gradient before team selection */
+    color: white;
+    padding: 10px;
+    margin: 0;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}

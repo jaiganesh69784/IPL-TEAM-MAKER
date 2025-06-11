@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Team Maker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>IPL Team Maker</h1>
+    </header>
+
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="col-12 col-md-12 col-lg-12 col-xl-10 col-xxl-10" id="list">
+            <div class="vn-teamOverviewWrap">
+                <div class="vn-teamNav">
+                    <ul class="teams-logo-slider">
+                        <li>
+                            <div class="ap-logoteam-wrp" data-team="CSK">
+                                <div class="right-tick">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <img src="header_logos/logos/CSK_logo.png" alt="CSK">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ap-logoteam-wrp" data-team="DC">
+                                <img src="header_logos/logos/DC_logo.png" alt="DC">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ap-logoteam-wrp" data-team="GT">
+                                <img src="header_logos/logos/GT_logo.png" alt="GT">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ap-logoteam-wrp" data-team="KKR">
+                                <img src="header_logos/logos/KKR_logo.png" alt="KKR">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ap-logoteam-wrp" data-team="LSG">
+                                <img src="header_logos/logos/LSG_logo.png" alt="LSG">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ap-logoteam-wrp" data-team="MI">
+                                <img src="header_logos/logos/MI_logo.png" alt="MI">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ap-logoteam-wrp" data-team="PBKS">
+                                <img src="header_logos/logos/PBKS_logo.png" alt="PBKS">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ap-logoteam-wrp" data-team="RR">
+                                <img src="header_logos/logos/RR_logo.png" alt="RR">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ap-logoteam-wrp" data-team="RCB">
+                                <img src="header_logos/logos/RCB_logo.png" alt="RCB">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ap-logoteam-wrp" data-team="SRH">
+                                <img src="header_logos/logos/SRH_logo.png" alt="SRH">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="team-name">
+        <h2>Select Team</h2>
+    </div>
+
+    <div id="main-container">
+        <div id="squad-view">
+            <div id="squad">
+                <!-- Squad players will be dynamically added here -->
+            </div>
+        </div>
+        <!-- Resizer will be added by JavaScript -->
+        <div id="playing-team">
+            <h3>Lineup</h3>
+            <div id="positions">
+                <!-- Positions will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-message" class="popup-hidden">
+        <span class="popup-text">Maximum of 4 foreign players allowed in the playing team!</span>
+        <button class="popup-close">×</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</body>
+</html>
