@@ -1,0 +1,55 @@
+/* Reset default margin and padding */
+body, ul, li {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Center the container on the page */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+/* Teams container */
+.teams-container {
+  width: 80%;
+  max-width: 800px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Teams logo list */
+.teams-logo-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  gap: 20px; /* Space between logos */
+}
+
+/* Individual logo wrapper */
+.ap-logoteam-wrp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Logo images */
+.ap-logoteam-wrp img {
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect on logos */
+.ap-logoteam-wrp img:hover {
+  transform: scale(1.1);
+}
